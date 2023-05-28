@@ -1,0 +1,22 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT</title>
+</head>
+<body>
+    <h1>ChatGPT</h1>
+    <form method="POST" action="{{ url_for('chat') }}">
+        <input type="text" name="user_input" placeholder="Enter your message" autofocus>
+        <input type="submit" value="Send">
+    </form>
+
+    {% if user_input %}
+      {% for u,m in zip(user_input,model_output):  %}  
+        <p>You: {{ u }}</p>
+        <p>ChatGPT: {{ m }}</p>
+       {% endfor %}
+    {% endif %}
+</body>
+</html>
+
